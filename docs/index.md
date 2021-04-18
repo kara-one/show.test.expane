@@ -35,3 +35,9 @@ It may take a full working day to complete this task, if you are not comfortable
 - Deploy result application anywhere you want, **Github Pages** and **Vercel** are simplest options
 - If you want to add any information or explain any details - please do it inside **README.md**
 - Send link to result repository and url of deployed application for evaluation to email: [hi@expane.pro](mailto:hi@expane.pro)
+
+
+
+
+npm install --save typescript "@types/node" "@types/react" "@types/react-dom" "@types/jest"
+npm install -D "tailwindcss@npm:@tailwindcss/postcss7-compat" "@tailwindcss/postcss7-compat" "postcss@^7" "autoprefixer@^9"
