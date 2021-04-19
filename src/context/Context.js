@@ -1,3 +1,3 @@
 import { createContext } from 'react';
 
-export const ClientsContext = createContext({ clients: [] });
+export const ClientsContext = createContext();

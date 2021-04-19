@@ -1,14 +1,21 @@
-import React, { useReducer } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import { ClientsContext } from '../../context/Context';
-import { initialState, reducerClients } from '../../reducers/reducerClients';
 import ClientRow from './ClientRow';
 import ClientsHeading from './ClientsHeading';
+import { clientsRequest } from '../../actions/clientsActions';
 
 export default function Clients() {
-    const [state, dispatch] = useReducer(reducerClients, initialState);
+    const { state, dispatch } = useContext(ClientsContext);
+
+    const request = useCallback(() => {
+        clientsRequest(dispatch);
+    }, [dispatch]);
+    useEffect(() => {
+        request();
+    }, [request]);
 
     return (
-        <ClientsContext.Provider value={{ dispatch, state }}>
+        <>
             <ClientsHeading />
             <div className="flex flex-col">
                 <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -50,18 +57,29 @@ export default function Clients() {
                                     </tr>
                                 </thead>
                                 <tbody className="bg-white divide-y divide-gray-200">
-                                    {state.map((client) => (
-                                        <ClientRow
-                                            client={client}
-                                            key={client.id}
-                                        />
-                                    ))}
+                                    {state.loading ? (
+                                        <tr>
+                                            <td
+                                                colSpan="4"
+                                                className="pl-6 py-4 text-center"
+                                            >
+                                                ... Load data
+                                            </td>
+                                        </tr>
+                                    ) : (
+                                        state.clients.map((client) => (
+                                            <ClientRow
+                                                client={client}
+                                                key={client.id}
+                                            />
+                                        ))
+                                    )}
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
-        </ClientsContext.Provider>
+        </>
     );
 }
