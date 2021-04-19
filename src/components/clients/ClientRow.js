@@ -1,5 +1,4 @@
-import React from 'react';
-import { PencilIcon, TrashIcon } from '@heroicons/react/solid';
+import Button from '../../ui/Button';
 
 export default function ClientRow({ client }) {
     return (
@@ -35,15 +34,9 @@ export default function ClientRow({ client }) {
                 <div className="text-sm text-gray-900">{client.phone}</div>
             </td>
             <td className="px-6 py-4 whitespace-nowrap ">
-                <div className="flex justify-end">
-                    <PencilIcon
-                        className="h-8 w-8 mr-2 p-1 text-gray-400 cursor-pointer rounded-sm hover:bg-blue-600 hover:text-white"
-                        aria-hidden="true"
-                    />
-                    <TrashIcon
-                        className="h-8 w-8 p-1 text-gray-400 cursor-pointer rounded-sm hover:bg-red-600 hover:text-white"
-                        aria-hidden="true"
-                    />
+                <div className="flex justify-end space-x-2">
+                    <Button color="light" icon="pencil"/>
+                    <Button color="light-danger" icon="trash"/>
                 </div>
             </td>
         </tr>

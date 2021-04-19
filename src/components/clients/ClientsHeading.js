@@ -1,10 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import ClientsPagination from './ClientsPagination';
 import ClientsFilter from './ClientsFilter';
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ');
-}
+import ClientsActions from './ClientsActions';
 
 export default function ClientsHeading() {
     return (
@@ -13,12 +10,17 @@ export default function ClientsHeading() {
                 <h2 className="mb-3 text-2xl font-bold text-left leading-7 text-gray-900 sm:text-3xl sm:truncate">
                     Clients
                 </h2>
-                <div className="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
+                <div className="mt-1 flex flex-row items-end flex-wrap space-x-3">
                     <ClientsFilter />
                 </div>
             </div>
-            <div className="mt-5 flex justify-end items-end lg:mt-0 lg:ml-4">
-                <ClientsPagination />
+            <div className="mt-5 flex flex-col justify-end items-end lg:mt-0 lg:ml-4">
+                <div className="mt-1 mb-3 flex flex-row justify-end items-end flex-wrap space-x-3">
+                    <ClientsActions />
+                </div>
+                <div className="mt-1 flex flex-row justify-end items-end flex-wrap">
+                    <ClientsPagination />
+                </div>
             </div>
         </div>
     );
