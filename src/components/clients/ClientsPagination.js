@@ -3,7 +3,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
 
 export default function ClientsPagination() {
     return (
-        <div className="bg-white flex items-center justify-between sm:px-0 px-3">
+        <div className="bg-white flex items-center justify-between px-0">
             <div className="flex-1 flex justify-between sm:hidden">
                 <a
                     href="#"
