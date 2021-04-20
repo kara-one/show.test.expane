@@ -1,6 +1,12 @@
 import Button from '../../ui/Button';
+import nophoto from '../../assets/img/nophoto.jpg';
 
 export default function ClientRow({ client }) {
+    const imgErrorHandler = (elem) => {
+        elem.target.src = nophoto;
+        elem.target.onerror = null;
+    };
+
     return (
         <tr>
             <td className="pl-6 py-4 text-left">
@@ -18,6 +24,9 @@ export default function ClientRow({ client }) {
                             className="h-10 w-10 rounded-full"
                             src={client.avatarUrl}
                             alt=""
+                            onError={(e) => imgErrorHandler(e)}
+                            // onError={imgErrorHandler.bind(this)}
+                            // onerror="this.onerror=null;this.src='imagefound.gif';"
                         />
                     </div>
                     <div className="ml-4">
@@ -35,8 +44,8 @@ export default function ClientRow({ client }) {
             </td>
             <td className="px-6 py-4 whitespace-nowrap ">
                 <div className="flex justify-end space-x-2">
-                    <Button color="light" icon="pencil"/>
-                    <Button color="light-danger" icon="trash"/>
+                    <Button color="light" icon="pencil" />
+                    <Button color="light-danger" icon="trash" />
                 </div>
             </td>
         </tr>
