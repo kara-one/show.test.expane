@@ -1,21 +1,25 @@
-import React, { useCallback, useContext, useEffect } from 'react';
-import { ClientsContext } from '../../context/Context';
+import React, { useCallback, useEffect, useReducer } from 'react';
+import { initialState, reducerClients } from '../../reducers/reducerClients';
+
 import ClientRow from './ClientRow';
+import { ClientsContext } from '../../context/Context';
 import ClientsHeading from './ClientsHeading';
 import { clientsRequest } from '../../actions/clientsActions';
 
 export default function Clients() {
-    const { state, dispatch } = useContext(ClientsContext);
+    const [state, dispatch] = useReducer(reducerClients, initialState);
 
     const request = useCallback(() => {
         clientsRequest(dispatch);
     }, [dispatch]);
     useEffect(() => {
+        console.log('qq');
+        
         request();
     }, [request]);
 
     return (
-        <>
+        <ClientsContext.Provider value={{ dispatch, state }}>
             <ClientsHeading />
             <div className="flex flex-col">
                 <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -80,6 +84,6 @@ export default function Clients() {
                     </div>
                 </div>
             </div>
-        </>
+        </ClientsContext.Provider>
     );
 }

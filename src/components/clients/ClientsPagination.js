@@ -1,7 +1,13 @@
 /* This example requires Tailwind CSS v2.0+ */
+
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid';
 
+import {ClientsContext} from '../../context/Context'
+import { useContext } from 'react';
+
 export default function ClientsPagination() {
+    const { state, dispatch } = useContext(ClientsContext);
+    
     return (
         <div className="bg-white flex items-center justify-between px-0">
             <div className="flex-1 flex justify-between sm:hidden">
