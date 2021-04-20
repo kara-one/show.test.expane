@@ -1,4 +1,5 @@
 import {
+    CHANGE_PAGE,
     CLIENTS_FAIL,
     CLIENTS_REQUEST,
     CLIENTS_SUCCESS,
@@ -27,10 +28,15 @@ export const clientsRequest = async (dispatch) => {
         );
         const clients = data.getClients;
         clients.sort((a, b) => a.id - b.id);
+
         dispatch({ type: CLIENTS_SUCCESS, payload: clients });
 
         return clients;
     } catch (error) {
         dispatch({ type: CLIENTS_FAIL, error: error.message });
     }
+};
+
+export const changePage = (page) => (state, dispatch) => {
+    dispatch({ type: CHANGE_PAGE, page });
 };

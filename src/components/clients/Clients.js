@@ -13,8 +13,6 @@ export default function Clients() {
         clientsRequest(dispatch);
     }, [dispatch]);
     useEffect(() => {
-        console.log('qq');
-        
         request();
     }, [request]);
 
@@ -71,7 +69,7 @@ export default function Clients() {
                                             </td>
                                         </tr>
                                     ) : (
-                                        state.clients.map((client) => (
+                                        state.clientsOnPage.map((client) => (
                                             <ClientRow
                                                 client={client}
                                                 key={client.id}

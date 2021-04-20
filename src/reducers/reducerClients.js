@@ -3,8 +3,18 @@
 export const CLIENTS_REQUEST = 'CLIENTS/CLIENTS_REQUEST';
 export const CLIENTS_SUCCESS = 'CLIENTS/CLIENTS_SUCCESS';
 export const CLIENTS_FAIL = 'CLIENTS/CLIENTS_FAIL';
+export const CHANGE_PAGE = 'CLIENTS/CHANGE_PAGE';
 
-export const initialState = { loading: true, clients: [] };
+export const initialState = {
+    loading: true,
+    clients: [],
+    clientsOnPage: [],
+    total: 0,
+    countPages: 0,
+    page: 1,
+    limit: 5,
+    offset: 0,
+};
 export const fakeState = {
     loading: false,
     clients: [
@@ -19,17 +29,38 @@ export const fakeState = {
     ],
 };
 
-export const reducerClients = (state, action) => {
+export const reducerClients = (state = initialState, action) => {
+    let total, countPages, clientsOnPage, offset;
+
     switch (action.type) {
         case CLIENTS_REQUEST:
-            return { loading: true, clients: [] };
+            return { ...state, loading: true, clients: [] };
         case CLIENTS_SUCCESS:
+            total = action.payload.length;
+            countPages = Math.ceil(total / state.limit);
+            clientsOnPage = action.payload.filter(
+                (item, index) =>
+                    state.offset <= index && index < state.page * state.limit,
+            );
+
             return {
+                ...state,
                 loading: false,
                 clients: action.payload,
+                total,
+                countPages,
+                clientsOnPage,
             };
         case CLIENTS_FAIL:
-            return { loading: false, error: action.payload };
+            return { ...state, loading: false, error: action.payload };
+        case CHANGE_PAGE:
+            offset = (action.page - 1) * state.limit;
+            clientsOnPage = state.clients.filter(
+                (item, index) =>
+                    offset <= index && index < action.page * state.limit,
+            );
+
+            return { ...state, page: action.page, offset, clientsOnPage};
 
         default:
             return state;
