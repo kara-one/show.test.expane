@@ -63,5 +63,5 @@ module.exports = {
             textColor: ['active'],
         },
     },
-    plugins: [],
+    plugins: [require('@tailwindcss/forms')],
 };

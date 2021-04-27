@@ -1,4 +1,22 @@
-# expane joining flow
+# Hi from Explain
+<hi@expane.pro>
+Меня зовут Фёдор, я техлид в Expane. Спасибо большое за отклик на нашу вакансию. Немного информации о нас и вакансии, чтобы Вы могли принять решение, подходит ли она Вам. Мы - стартап, который работает над собственным продуктом. Это облачное решение для автоматизации и продвижения клиенто-ориентированного бизнеса. Техническая команда состоит из 4х разработчиков и мы хотим нанять ещё одного. Вот основные вызовы, которые Вас ждут, если Вы захотите присоединиться к Expane:
+
+- Вам придётся развить самодисциплину - никто не будет стоять у Вас за спиной в течении рабочего дня, однако в конце дня написанный Вами код будет просматриваться;
+- у Вас не будет проджект менеджера, Вы сами будете писать таски, над которыми будете работать - для этого Вам понадобится досконально изучить продукт;
+- Вы будете обучаться самостоятельно, я буду давать вектор, помогать советами, но процесс обучения останется Вашей ответственностью;
+
+Я сознательно не буду писать все преимущества, которые Вас ждут по сравнению со среднестатистической аутсорс компанией, расскажу Вам о них в первый рабочий день.
+
+Процесс найма состоит из 3х шагов и описан [ТУТ](https://www.notion.so/expane-joining-flow-fda22bae990c4ab1b566fc1da7d4677f). Т.к. мы не требуем от кандидатов коммерческого опыта, основным критерием, на основании которого мы оцениваем квалификацию, внимание к деталям, умение работать с Git и т.д. - тестовое задание, выполнение которого займёт примерно один рабочий день. Если Вы готовы к этому, все инструкции по ссылке выше - буду рад увидеть что у Вас получится. Буду также рад любому фидбэку, даже если Вы не закончите выполнение задания(что именно оказалось слишком сложным, почему не дошли до конца и т.д.)
+
+Желаю удачи и хорошего весеннего настроения! ☀️
+
+Фёдор,
+Software engineer at Expane
+
+# EXPANE JOINING FLOW
+https://www.notion.so/expane-joining-flow-fda22bae990c4ab1b566fc1da7d4677f
 
 Hey buddy, how is it going?
 
@@ -36,8 +54,62 @@ It may take a full working day to complete this task, if you are not comfortable
 - If you want to add any information or explain any details - please do it inside **README.md**
 - Send link to result repository and url of deployed application for evaluation to email: [hi@expane.pro](mailto:hi@expane.pro)
 
+## Links
+- https://tailwindcss.com/docs/flex-direction
+- https://tailwindui.com/components/application-ui/forms/form-layouts
+- https://tailwindui.com/documentation
+- https://heroicons.com/
+- https://kimia-ui.vercel.app/components/modal
+- https://react-hook-form.com/get-started/
+- https://www.npmjs.com/package/@tailwindcss/forms
+- https://create-react-app.dev/docs/adding-typescript/
+- https://github.com/tailwindlabs/tailwindcss-forms
+- https://www.npmjs.com/package/react-query
+- https://www.npmjs.com/package/graphql-request
+- https://www.npmjs.com/package/react-hook-form
 
 
-
+## NPM
 npm install --save typescript "@types/node" "@types/react" "@types/react-dom" "@types/jest"
 npm install -D "tailwindcss@npm:@tailwindcss/postcss7-compat" "@tailwindcss/postcss7-compat" "postcss@^7" "autoprefixer@^9"
+
+## GraphQL Schema
+directive @cacheControl(
+  maxAge: Int
+  scope: CacheControlScope
+) on FIELD_DEFINITION | OBJECT | INTERFACE
+directive @specifiedBy(url: String!) on SCALAR
+enum CacheControlScope {
+  PUBLIC
+  PRIVATE
+}
+
+type Client {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  phone: String
+  avatarUrl: String
+}
+
+type Mutation {
+  addClient(
+    firstName: String!
+    lastName: String!
+    phone: String
+    avatarUrl: String
+  ): Client
+  updateClient(
+    id: ID!
+    firstName: String
+    lastName: String
+    phone: String
+    avatarUrl: String
+  ): Client
+}
+
+type Query {
+  getClients: [Client]
+}
+
+scalar Upload
